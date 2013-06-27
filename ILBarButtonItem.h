@@ -53,4 +53,11 @@
 
 - (void)setCustomAction:(SEL)action;
 
+/**
+ * Perform the button's selector on the button's target.
+ *
+ * @return An object that is the result of the message.
+ */
+- (id)perform;
+
 @end

@@ -73,4 +73,18 @@
            forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (id)perform
+{
+	if ([customTarget respondsToSelector:customAction]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+		return [customTarget performSelector:customAction];
+#pragma clang diagnostic pop
+	}
+	
+	NSLog(@"%s: Custom target (%@) does not respond to custom selector: %@",
+			  __PRETTY_FUNCTION__, customTarget, NSStringFromSelector(customAction));
+	return nil;
+}
+
 @end
